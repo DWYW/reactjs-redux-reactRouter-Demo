@@ -1,0 +1,97 @@
+@import "./variables.less";
+
+.system-navigation-page {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 40px;
+  background-color: rgb(240, 240, 240);
+  border-right: 1px solid rgb(250, 250, 250);
+  .system-navigation-item {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    .system-navigation-item-title {
+      position: relative;
+      cursor: pointer;
+      width: 100%;
+      color: @baseFontColor;
+      line-height: 40px;
+      box-sizing: border-box;
+      padding: 0 1.6em;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 14px;
+      transition: all 0.3s;
+      &:hover {
+        background: rgba(0, 0, 0, .08);
+      }
+      .system-navigation-item-title-content {
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        a {
+          color: @baseFontColor;
+          text-decoration: none;
+          display: block;
+        }
+        a:hover {
+          //color: @navActiveColor;
+        }
+      }
+      i {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        font-size: 12px;
+        font-weight: bold;
+        transition: all 0.2s;
+        transform: rotate(0deg);
+      }
+    }
+    .system-navigation-item-children {
+      margin: 0;
+      box-sizing: border-box;
+      transition: all 0.2s;
+      overflow: hidden;
+      padding: 0;
+      font-size: 14px;
+      li {
+        list-style: none;
+        line-height: 40px;
+        cursor: pointer;
+        white-space: nowrap;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 0 0 0 2.6em;
+        transition: all 0.3s;
+        &:hover {
+          background: rgba(0, 0, 0, .08);
+        }
+      }
+      li.active {
+        color: @navActiveColor;
+      }
+    }
+  }
+  .system-navigation-item.toggled {
+    .system-navigation-item-title {
+      i {
+        transform: rotate(90deg);
+      }
+    }
+  }
+  .system-navigation-item {
+    .system-navigation-item-title.active {
+      .system-navigation-item-title-content {
+        a {
+          color: @navActiveColor;
+        }
+      }
+    }
+  }
+}

@@ -11,12 +11,17 @@ var assetsSubDirectory = process.env.NODE_ENV === 'production'
     ? config.build.assetsSubDirectory
     : config.dev.assetsSubDirectory
 
+//add fetch
+Object.keys(baseWebpackConfig.entry).forEach(function (name) {
+  baseWebpackConfig.entry[name] = ['whatwg-fetch'].concat(baseWebpackConfig.entry[name])
+})
+
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
     loaders: [
       {
         test: /\.less$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'style-loader!css-loader!autoprefixer-loader!less-loader')
+        loader: 'style-loader!css-loader!autoprefixer-loader!less-loader'
       }
     ]
   },

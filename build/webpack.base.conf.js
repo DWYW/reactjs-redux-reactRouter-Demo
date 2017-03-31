@@ -36,27 +36,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      {
-        // test: /\.js$/,
-        // // loader: ['react-hot','babel'],
-        // loader: 'babel',
-        // include: [
-        //   path.join(projectRoot, 'src')
-        // ],
-        // exclude: /node_modules/
-        test: /\.(js|jsx)?$/,
-        loader: 'babel',
-        include: path.join(projectRoot, 'src'),
-        exclude: /node_modules/
-      },
-      // { 
-      //   test: /\.jsx$/,
-      //   loader: 'jsx-loader?insertPragma=React.DOM&harmony'
-      // },
-      {
-        test: /\.json$/,
-        loader: 'json'
-      },
+      
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url',
@@ -72,7 +52,17 @@ module.exports = {
           limit: 10000,
           name: path.posix.join(assetsSubDirectory,'fonts/[name].[hash:7].[ext]')
         }
-      }
+      },
+      {
+        test: /\.(js|jsx)?$/,
+        loader: 'babel',
+        include: path.join(projectRoot, 'src'),
+        exclude: /node_modules/
+      },
+      {
+        test: /\.json$/,
+        loader: 'json'
+      },
     ]
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import reactDOM from 'react-dom'
-import { Router, browserHistory} from 'react-router'
+import { Router,  hashHistory, browserHistory} from 'react-router'
 import routes from './router/index.jsx'
 
 
@@ -14,11 +14,16 @@ import store from './store/index.jsx'
 
 reactDOM.render(
 	<Provider store={store}>
-		<Router history={browserHistory} routes={routes}></Router>
+		<Router history={hashHistory} routes={routes}></Router>
 	</Provider>
 	,
 	document.getElementById('app')
+	// document.getElementsByTagName("body")[0]
 )
+
+
+// alert(23423)
+
 
 
 

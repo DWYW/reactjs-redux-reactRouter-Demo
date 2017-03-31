@@ -1,7 +1,179 @@
-#app{
-	background:#ccc;
-	transform:translateX(0);
-	display:flex;
-	padding-left:10px;
-	box-sizing: border-box;
+@import './variables.less';
+
+#app {
+  box-sizing: border-box;
+  width: 100vw;
+  -webkit-touch-callout: none; //阻止微信ios长按放大镜效果
+  color: @baseFontColor;
+  font-weight: 400;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+.system-section {
+  width: 100%;
+  .system-headpiece {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: @headpieceHeight;
+    box-sizing: border-box;
+    z-index: 20;
+    background-image: -webkit-linear-gradient(to bottom, rgba(0, 188, 212, 1), rgba(0, 188, 212, .8), rgba(0, 188, 212, .5));
+    /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
+    background-image: -moz-linear-gradient(to bottom, rgba(0, 188, 212, 1), rgba(0, 188, 212, .8), rgba(0, 188, 212, .5));
+    /* For Firefox (3.6 to 15) */
+    background-image: -o-linear-gradient(to bottom, rgba(0, 188, 212, 1), rgba(0, 188, 212, .8), rgba(0, 188, 212, .5));
+    /* For old Opera (11.1 to 12.0) */
+    background-image: linear-gradient(to bottom, rgba(0, 188, 212, 1), rgba(0, 188, 212, .8), rgba(0, 188, 212, .5));
+    .system-headpiece-middle {
+      width: 100%;
+      // padding:0 100px 0 200px;
+      height: @headpieceHeight;
+      float: left;
+      .system-headpiece-middle-inner {
+        padding: 0 180px 0 200px;
+      }
+    }
+    .system-headpiece-right {
+      width: 180px;
+      height: @headpieceHeight;
+      float: left;
+      margin-left: -180px;
+      color: #ffffff;
+      .qrcode-section {
+        padding-top: 20px;
+        padding-right: 10px;
+        .nowNavigation {
+          padding-right: 4px;
+        }
+        i {
+          font-size: 14px;
+          cursor: pointer;
+          position: relative;
+          padding-left: 10px;
+          display: block;
+          width: 100%;
+          text-align: left;
+          font-weight: 600;
+          span {
+            font-size: 13px;
+            padding-left: 5px;
+            font-weight: 400;
+          }
+
+          .qrcode {
+            position: absolute;
+            right: 45px;
+            top: 0;
+            transition: all ease 0.3s;
+            transform-origin: top right;
+            border-radius: 4px;
+            overflow: hidden;
+            transform: scale(0);
+            img {
+              width: 80px;
+              display: block;
+            }
+          }
+          &:hover {
+            .qrcode {
+              display: block;
+              transform: scale(1);
+            }
+          }
+        }
+      }
+    }
+    .system-headpiece-left {
+      width: 200px;
+      height: @headpieceHeight;
+      margin-left: -100%;
+      box-sizing: border-box;
+      padding-left: 10px;
+      float: left;
+      color: #ffffff;
+      user-select: none;
+      cursor: default;
+      p {
+        margin: 0;
+        padding: 0;
+        line-height: 16px;
+        &:nth-child(1) {
+          padding-top: 24px;
+        }
+        &:nth-child(2) {
+          font-size: 14px;
+          padding-left: 4px;
+        }
+        i {
+          font-size: 24px;
+          font-weight: 600;
+          span {
+            font-weight: 400;
+            padding-left: 6px;
+          }
+        }
+      }
+    }
+  }
+  .system-navigation-section {
+    box-sizing: border-box;
+    width: @navigationWidth;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    padding-top: @headpieceHeight;
+    // background-color: @lighterBackGroundColor;
+  }
+  .system-main-page {
+    width: 100%;
+    padding-left: @navigationWidth+20px;
+    box-sizing: border-box;
+    padding-right: 15px;
+    padding-top: @headpieceHeight+10px;
+    .system-bottom{
+      width: 100%;
+      box-sizing: border-box;
+      padding: 20px 0 40px;
+      border-top: 2px dotted #ccc;
+      margin-top: 30px;
+      font-size: 14px;
+      p{
+        margin:0;
+        padding: 5px 0;
+        text-align: center;
+        a{
+          text-decoration: none;
+          color: @baseFontColor;
+        }
+        i{
+          padding-left: 10px;
+          font-size: 24px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+/* 超小屏幕（手机，小于 768px） */
+
+/* 小屏幕（平板，大于等于 768px） */
+
+@media (min-width: @screen-sm-min) {
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+
+@media (min-width: @screen-md-min) {
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+
+@media (min-width: @screen-lg-min) {
 }
