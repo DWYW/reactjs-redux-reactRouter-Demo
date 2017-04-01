@@ -1,79 +1,250 @@
-@selectDefaultColor: #e0e0e0;
-@selectPrimaryColor: #00bcd4;
+@import "../styles/variables.less";
 
-
-.select-ui{
+.select-ui {
   min-width: 120px;
-  height: 36px;
-  border-radius: 4px;
   display: inline-block;
   box-sizing: border-box;
   position: relative;
   user-select: none;
-  border: 1px solid @selectDefaultColor;
-  //&:focus{
-  //  border: 1px solid @selectDefaultColor;
-  //}
-  .select-select{
+  vertical-align: middle;
+  .select-select {
     width: 100%;
+    height: 100%;
     position: relative;
-    padding: 0 1em 0 0.5em ;
+    padding: 0 1em 0 0.5em;
     box-sizing: border-box;
     display: block;
     cursor: pointer;
-    height: 36px;
     overflow: hidden;
-    .select-value{
+    border-radius: 2px;
+    border: 1px solid @borderColor;
+    transition: all 0.2s;
+    .select-value {
       width: 100%;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      line-height: 34px;
 
     }
-    .select-icon{
+    .select-icon {
       position: absolute;
       right: 2px;
-      top: 10px;
+      top: 0;
       font-size: 12px;
-      color: @selectDefaultColor;
+      color: @borderColor;
+      transition: all 0.2s;
+    }
+    &.select-focus {
+      border-color: @primaryColor;
+      box-shadow: 0 0 4px @primaryColor;
+      .select-icon {
+        color: @primaryColor;
+      }
     }
   }
-  .select-options{
+  .select-options {
     position: relative;
     width: 100%;
-    .mark{
+    margin-top: 2px;
+    .mark {
       position: fixed;
-      top:0;
-      right:0;
-      bottom:0;
-      left:0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
       z-index: 9999;
     }
-    ul{
+    ul {
       position: absolute;
       left: 0;
-      top:100%;
+      top: 100%;
       width: 100%;
       background: #ffffff;
-      border: 1px solid @selectDefaultColor;
-      border-radius: 4px;
+      border: 1px solid @primaryColor;
+      border-radius: 2px;
       box-sizing: border-box;
-      padding: 4px 0;
-      margin:0;
+      padding: 2px 0;
+      margin: 0 !important;
       z-index: 9999;
       transition: all 0.2s;
       transform-origin: center top;
-      transform:scaleY(0);
-      li{
-        margin:0;
+      transform: scaleY(0);
+      li {
+        margin: 0;
         list-style: none;
         box-sizing: border-box;
-        padding:0 10px;
-        line-height: 28px;
+        padding: 0 10px;
+        //line-height: 28px;
         cursor: pointer;
-        &:hover{
-          background: @selectDefaultColor;
+        &:hover {
+          background: @borderColor;
+        }
+        &.select-option-selected {
+          color: @primaryColor;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  &.select-ui-error-error {
+    .select-select {
+      border-color: @errorColor;
+      .select-value {
+        color: @errorColor;
+      }
+      .select-icon {
+        color: @errorColor;
+      }
+    }
+
+  }
+  &.select-ui-error-danger {
+    .select-select {
+      border-color: @dangerColor;
+      .select-value {
+        color: @dangerColor;
+      }
+      .select-icon {
+        color: @dangerColor;
+      }
+    }
+
+  }
+  &.select-ui-default {
+    .select-select {
+      &.select-focus {
+        border-color: @borderColor;
+        box-shadow: 0 0 4px @borderColor;
+        .select-value {
+          color: @baseFontColor;
+        }
+        .select-icon {
+          color: @borderColor;
+        }
+      }
+    }
+    .select-options {
+      ul {
+        border: 1px solid @borderColor;
+        li {
+          &:hover {
+            background: rgba(224, 224, 224, 0.5);
+          }
+          &.select-option-selected {
+            color: #333333;
+          }
+        }
+      }
+    }
+  }
+  &.select-ui-primary {
+    .select-select {
+      &.select-focus {
+        border-color: @primaryColor;
+        box-shadow: 0 0 4px @primaryColor;
+        .select-value {
+          color: @baseFontColor;
+        }
+        .select-icon {
+          color: @primaryColor;
+        }
+      }
+    }
+    .select-options {
+      ul {
+        border: 1px solid @primaryColor;
+        li {
+          &:hover {
+            background: rgba(0, 188, 212, 0.3);
+          }
+          &.select-option-selected {
+            color: @primaryColor;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+  &.select-ui-success {
+    .select-select {
+      &.select-focus {
+        border-color: @successColor;
+        box-shadow: 0 0 4px @successColor;
+        .select-value {
+          color: @baseFontColor;
+        }
+        .select-icon {
+          color: @successColor;
+        }
+      }
+    }
+    .select-options {
+      ul {
+        border: 1px solid @successColor;
+        li {
+          &:hover {
+            background: rgba(92, 184, 92, 0.3);;
+          }
+          &.select-option-selected {
+            color: @successColor;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+  &.select-ui-error {
+    .select-select {
+      &.select-focus {
+        border-color: @errorColor;
+        box-shadow: 0 0 4px @errorColor;
+        .select-value {
+          color: @baseFontColor;
+        }
+        .select-icon {
+          color: @errorColor;
+        }
+      }
+    }
+    .select-options {
+      ul {
+        border: 1px solid @errorColor;
+        li {
+          &:hover {
+            background: rgba(234, 115, 115, 0.3);
+          }
+          &.select-option-selected {
+            color: @errorColor;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+  &.select-ui-danger {
+    .select-select {
+      &.select-focus {
+        border-color: @dangerColor;
+        box-shadow: 0 0 4px @dangerColor;
+        .select-value {
+          color: @baseFontColor;
+        }
+        .select-icon {
+          color: @dangerColor;
+        }
+      }
+    }
+    .select-options {
+      ul {
+        border: 1px solid @dangerColor;
+        li {
+          &:hover {
+            background: rgba(240, 173, 78, 0.3);
+          }
+          &.select-option-selected {
+            color: @dangerColor;
+            font-weight: normal;
+          }
         }
       }
     }

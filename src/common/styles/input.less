@@ -1,0 +1,51 @@
+@import "./variables.less";
+
+input.input {
+  outline: none;
+  width:160px;
+  height: 24px;
+  box-sizing: border-box;
+  padding:0 0.5em;
+  border-radius:2px;
+  border:1px solid @borderColor;
+  transition:all 0.2s;
+
+  &.theme-default{
+    border-color: @borderColor;
+  }
+  &.theme-primary{
+    border-color: @primaryColor;
+  }
+  &.theme-success{
+    border-color: @successColor;
+  }
+  &.theme-error{
+    border-color: @errorColor;
+  }
+  &.theme-danger{
+    border-color: @dangerColor;
+  }
+
+  &.default:focus{
+    border-color: @borderColor;
+    box-shadow: 0 0 4px @borderColor;
+  }
+  &.primary:focus{
+    border-color: @primaryColor;
+    box-shadow: 0 0 4px @primaryColor;
+  }
+  &.success:focus{
+    border-color: @successColor;
+    box-shadow: 0 0 4px @successColor;
+  }
+  &.error:focus{
+    border-color: @errorColor;
+    box-shadow: 0 0 4px @errorColor;
+  }
+  &.danger:focus{
+    border-color: @dangerColor;
+    box-shadow: 0 0 4px @dangerColor;
+  }
+
+
+}
