@@ -1,5 +1,8 @@
 import Notification from '../components/notification/Notification.jsx';
 import MySelect from '../components/form/select/MySelect.jsx';
+import MyCheckBox from '../components/form/checkbox/MyCheckBox.jsx';
+import MyRadioGroup from '../components/form/radio/MyRadioGroup.jsx';
+import Form from '../components/form/Form.jsx';
 
 const routes = {
   path: '/',
@@ -14,6 +17,18 @@ const routes = {
     }, {
       path: 'MySelect',
       component: MySelect
+
+    }, {
+      path: 'MyCheckBox',
+      component: MyCheckBox
+
+    }, {
+      path: 'MyRadioGroup',
+      component: MyRadioGroup
+
+    }, {
+      path: 'Form',
+      component: Form
 
     }, {
       path: 'hello',

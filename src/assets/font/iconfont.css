@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1490870576753'); /* IE9*/
-  src: url('iconfont.eot?t=1490870576753#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1490870576753') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1490870576753') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1490870576753#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1491113289774'); /* IE9*/
+  src: url('iconfont.eot?t=1491113289774#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1491113289774') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1491113289774') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1491113289774#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -83,7 +83,7 @@
 
 .icon-react:before { content: "\e63f"; }
 
-.icon-tahz-:before { content: "\e734"; }
+.icon-checkbox-checked:before { content: "\e734"; }
 
 .icon-radio:before { content: "\e652"; }
 

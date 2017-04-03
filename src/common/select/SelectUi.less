@@ -86,7 +86,31 @@
       }
     }
   }
-  &.select-ui-error-error {
+  &.select-ui-theme-primary {
+    .select-select {
+      border-color: @primaryColor;
+      .select-value {
+        color: @primaryColor;
+      }
+      .select-icon {
+        color: @primaryColor;
+      }
+    }
+
+  }
+  &.select-ui-theme-success {
+    .select-select {
+      border-color: @successColor;
+      .select-value {
+        color: @successColor;
+      }
+      .select-icon {
+        color: @successColor;
+      }
+    }
+
+  }
+  &.select-ui-theme-error {
     .select-select {
       border-color: @errorColor;
       .select-value {
@@ -98,7 +122,7 @@
     }
 
   }
-  &.select-ui-error-danger {
+  &.select-ui-theme-danger {
     .select-select {
       border-color: @dangerColor;
       .select-value {

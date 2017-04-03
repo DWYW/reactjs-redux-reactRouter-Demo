@@ -2,65 +2,45 @@
  * Created by shiwentao on 2017/3/27.
  */
 export default {
-  items:[{
-    title:"Notification",
-    path:"Notification",
-    query:null,
-    children:null
-  },{
-    title:"MySelect",
-    path:"MySelect",
-    query:null,
-    children:null
-  },{
-    title:"title2",
-    path:null,
-    query:null,
-    children:[{
-      title:"title2-1",
-      path:"welcome",
-      query:{id:2423},
-      children:null
-    },{
-      title:"title2-2",
-      path:"hello",
-      query:null,
-      children:null
-    }]
-  },{
-    title:"title3",
-    path:"hello2",
-    query:null,
-    children:null
-  },{
-    title:"title4",
-    path:"hello3",
-    query:null,
-    children:null
-  },{
-    title:"title5",
-    path:null,
-    query:null,
-    children:[{
-      title:"title5-1",
-      path:"welcome1",
-      query:null,
-      children:null
-    },{
-      title:"title5-2",
-      path:"hello",
-      query:null,
-      children:[{
-        title:"title5-2-1",
-        path:"hello",
-        query:null,
-        children:null
-      },{
-        title:"title5-2-2",
-        path:"hello",
-        query:null,
-        children:null
-      }]
+  items: [{
+    title: "Notification",
+    path: "Notification",
+    query: null,
+    children: null
+  }, {
+    title: "Select",
+    path: "MySelect",
+    query: null,
+    children: null
+  }, {
+    title: "CheckBox",
+    path: "MyCheckBox",
+    query: null,
+    children: null
+  }, {
+    title: "RadioGroup",
+    path: "MyRadioGroup",
+    query: null,
+    children: null
+  }, {
+    title: "Form",
+    path: "form",
+    query: null,
+    children: null
+  }, {
+    title: "title2",
+    path: null,
+    query: null,
+    children: [{
+      title: "title2-1",
+      path: "/",
+      query: {id: 2423},
+      children: null
+    }, {
+      title: "title2-2",
+      path: "/",
+      query: null,
+      children: null
     }]
   }]
 }

@@ -18,7 +18,7 @@ function create(type) {
     }
     opts.id = new Date().getTime();
     opts.content = content;
-    opts.icon = opts.icon !== undefined ? opts.icon !== false || opts.icon !== true ? true : opts.icon : false;
+    opts.icon = opts.icon !== undefined ? opts.icon !== false && opts.icon !== true ? true : opts.icon : false;
     opts.close = opts.close !== undefined ? opts.close !== false && opts.close !== true ? false : opts.close : true;
     opts.duration = opts.duration !== undefined ? opts.close ? opts.duration : 5 : 5;
     contents.addMessage(opts)

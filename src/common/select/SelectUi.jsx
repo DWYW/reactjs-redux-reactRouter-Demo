@@ -4,9 +4,6 @@ import './SelectUi.less'
 export default class SelectUi extends React.Component {
   constructor(props) {
     super(props);
-    this.optionsStyle = null;
-    this.animationTime = 200; //200ms
-    this.selectInit = this.selectInit.bind(this);
     this.mountOptionsStyle = this.mountOptionsStyle.bind(this);
     this.handleOptionsShow = this.handleOptionsShow.bind(this);
     this.handleOptionsHide = this.handleOptionsHide.bind(this);
@@ -16,7 +13,7 @@ export default class SelectUi extends React.Component {
       callback: null,
       placeholder: null,
       selectType: 'default',
-      errorType: null,
+      themeType: null,
       selectUiStyle: {},
       selectedStatus: false,
       selectedValue: null,
@@ -26,7 +23,46 @@ export default class SelectUi extends React.Component {
   }
 
   componentDidMount() {
-    this.selectInit(this.props);
+    let options = this.props.options;
+    let callback = this.props.callback;
+    let selectStyle = {};
+    let selectType = "default";
+    let themeType = null;
+    this.props.fontSize ? selectStyle.fontSize = this.props.fontSize : "";
+    this.props.width ? selectStyle.width = this.props.width : "";
+    selectStyle.height = this.props.height ? this.props.height : "32px";
+    selectStyle.lineHeight = selectStyle.height;
+    let placeholder = this.props.placeholder ? this.props.placeholder : null;
+    const propsType = this.props.type;
+    if (propsType) {
+      if (propsType === 'default' || propsType === 'primary' || propsType === 'success' || propsType === 'error' || propsType === 'danger') {
+        selectType = propsType;
+      }
+    }
+    const propsThemeType = this.props.themeType;
+    if (propsThemeType && (propsThemeType === 'primary' || propsThemeType === 'success' || propsThemeType === 'error' || propsThemeType === 'danger')) {
+      themeType = propsThemeType;
+    }
+    let selectedIndex = null;
+    let selectedValue = null;
+    if (this.props.defaultIndex !== undefined && this.props.defaultIndex !== null) {
+      selectedIndex = parseInt(this.props.defaultIndex);
+      selectedValue = this.props.options[selectedIndex].toString();
+      if (callback) {
+        callback({index: selectedIndex, value: this.props.options[selectedIndex]})
+      }
+    }
+    this.setState({
+      options: options,
+      callback: callback,
+      placeholder: placeholder,
+      themeType: themeType,
+      selectType: selectType,
+      selectUiStyle: selectStyle,
+      selectedIndex: selectedIndex,
+      selectedValue: selectedValue
+    })
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -46,64 +82,28 @@ export default class SelectUi extends React.Component {
       })
     }
 
-    if (nextProps.errorType !== this.props.errorType) {
-      let errorType = this.state.errorType;
-      if (nextProps.errorType && (nextProps.errorType === 'error' || nextProps.errorType === 'danger')) {
-        errorType = nextProps.errorType;
+    if (nextProps.themeType !== this.props.themeType) {
+      let themeType = this.state.themeType;
+      if (nextProps.themeType && (nextProps.themeType === 'primary' || nextProps.themeType === 'success' || nextProps.themeType === 'error' || nextProps.themeType === 'danger')) {
+        themeType = nextProps.themeType;
+      } else {
+        themeType = null
       }
       this.setState({
-        errorType: errorType
+        themeType: themeType
       })
     }
-
-    if (nextProps.selectedIndex !== this.state.selectedIndex) {
+    if (this.state.selectedIndex !== undefined && nextProps.selectedIndex !== undefined && nextProps.selectedIndex !== null && nextProps.selectedIndex !== this.state.selectedIndex) {
+      this.handleSelected(nextProps.selectedIndex, nextProps.options[nextProps.selectedIndex]);
       this.setState({
-        selectedIndex:nextProps.selectedIndex,
-        selectedValue:nextProps.options[nextProps.selectedIndex]
+        selectedIndex: nextProps.selectedIndex.toString(),
+        selectedValue: nextProps.options[nextProps.selectedIndex].toString()
       })
+
     }
 
-
-    // return true;
   }
 
-  selectInit(props) {
-    let options = props.options;
-    let callback = props.callback;
-    let selectStyle = {};
-    let selectType = "default";
-    let errorType = null;
-    props.fontSize ? selectStyle.fontSize = props.fontSize : "";
-    props.width ? selectStyle.width = props.width : "";
-    selectStyle.height = props.height ? props.height : "32px";
-    selectStyle.lineHeight = selectStyle.height;
-    let placeholder = props.placeholder ? props.placeholder : null;
-    if (props.type) {
-      if (props.type === 'default' || props.type === 'primary' || props.type === 'success' || props.type === 'error' || props.type === 'danger') {
-        selectType = props.type;
-      }
-    }
-    if (props.errorType && (props.errorType === 'error' || props.errorType === 'danger')) {
-      errorType = props.errorType;
-    }
-    let selectedIndex = null;
-    let selectedValue = null;
-    if (props.selectedIndex !== undefined) {
-      selectedIndex = props.selectedIndex;
-      selectedValue = props.options[selectedIndex];
-    }
-    this.setState({
-      options: options,
-      callback: callback,
-      placeholder: placeholder,
-      errorType: errorType,
-      selectType: selectType,
-      selectUiStyle: selectStyle,
-      selectedIndex: selectedIndex,
-      selectedValue: selectedValue
-    })
-    // console.log(this.state)
-  }
 
   mountOptionsStyle(status) {
     const prefixes = ["Webkit", "Moz", "ms", "O", ""];
@@ -131,25 +131,26 @@ export default class SelectUi extends React.Component {
   }
 
   handleSelected(key, val) {
-    if (val !== this.state.selectedValue) {
+    if (val.toString() !== this.state.selectedValue) {
       if (this.state.callback) {
-        this.state.callback({index: key, value: val})
+        this.state.callback({index: parseInt(key), value: val})
       }
       this.setState({
         selectedIndex: key,
-        selectedValue: val
+        selectedValue: val.toString()
       })
     }
+
     this.handleOptionsHide();
   }
 
   render() {
     const options = this.state.options;
-    const errorType = this.state.errorType;
+    const themeType = this.state.themeType;
     const placeholder = this.state.placeholder;
     return (
     <div
-    className={errorType ? `select-ui select-ui-error-${errorType} select-ui-${this.state.selectType}` : `select-ui select-ui-${this.state.selectType}`}
+    className={themeType ? `select-ui select-ui-theme-${themeType} select-ui-${this.state.selectType}` : `select-ui select-ui-${this.state.selectType}`}
     style={this.state.selectUiStyle}>
       <label className={this.state.selectedStatus ? "select-select select-focus" : "select-select"}
              onClick={(e) => this.handleOptionsShow(e)}>
@@ -165,7 +166,7 @@ export default class SelectUi extends React.Component {
             Object.keys(options).map((key) => {
               return (
               <li className={key == this.state.selectedIndex ? "select-option-selected" : ""} key={key}
-                  onClick={() => this.handleSelected(key, options[key])}>{options[key]}</li>
+                  onClick={() => this.handleSelected(key, options[key])}>{options[key].toString()}</li>
               )
             })
           }
@@ -177,8 +178,9 @@ export default class SelectUi extends React.Component {
 }
 SelectUi.propTypes = {
   type: React.PropTypes.string,
-  errorType: React.PropTypes.string,
+  themeType: React.PropTypes.string,
   options: React.PropTypes.array,
+  defaultIndex: React.PropTypes.number,
   selectedIndex: React.PropTypes.number,
   callback: React.PropTypes.func,
   placeholder: React.PropTypes.string,
