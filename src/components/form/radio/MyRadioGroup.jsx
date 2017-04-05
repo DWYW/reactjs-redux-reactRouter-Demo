@@ -87,7 +87,7 @@ export default class MyRadioGroup extends React.Component {
           </div>
           <div className="mgt10px">
             <p>其它GadioGroup:{this.state.test2}</p>
-            <RadioGroup defaultChecked={2} radios={this.radios2} name="ssfsd"
+            <RadioGroup defaultChecked={2} vertical="block" radios={this.radios2} name="ssfsd"
                         callback={this.testCallback2}> </RadioGroup>
           </div>
         </div>

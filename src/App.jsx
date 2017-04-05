@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
@@ -16,7 +16,7 @@ class App extends React.Component {
     this.onWindowResize = this.onWindowResize.bind(this);
     this.navigationCallack = this.navigationCallack.bind(this);
     this.state = {
-      nowNavigation:"Notification"
+      nowNavigation: "Notification"
     }
   }
 
@@ -30,6 +30,11 @@ class App extends React.Component {
     }, 100)
 
   }
+  componentDidUpdate(prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      window.scrollTo(0, 0)
+    }
+  }
 
   componentDidMount() {
     this.onWindowResize();
@@ -39,9 +44,10 @@ class App extends React.Component {
   componentWillMount() {
     window.removeEventListener("resize", this.onWindowResize)
   }
-  navigationCallack(callbackData){
+
+  navigationCallack(callbackData) {
     this.setState({
-      nowNavigation:callbackData
+      nowNavigation: callbackData
     })
   }
 
@@ -52,10 +58,18 @@ class App extends React.Component {
         <Headpiece nowNavigation={this.state.nowNavigation}></Headpiece>
       </section>
       <div className="system-main-page">
-        {this.props.children}
+        <ReactCSSTransitionGroup
+        transitionName="fade"
+        transitionEnterTimeout={300}
+        transitionLeaveTimeout={300}
+        >
+          <div key={location}>{this.props.children}</div>
+        </ReactCSSTransitionGroup>
+
         <div className="system-bottom">
           <p>This is an example of learning reactjs </p>
-          <p>More examples <a href="https://github.com/DWYW" target="_blank"><i className="iconfont icon-github"></i></a></p>
+          <p>More examples <a href="https://github.com/DWYW" target="_blank"><i
+          className="iconfont icon-github"></i></a></p>
         </div>
       </div>
 

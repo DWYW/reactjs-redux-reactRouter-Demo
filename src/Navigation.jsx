@@ -21,12 +21,10 @@ export default class Navigation extends React.Component {
   }
 
   componentWillMount() {
-
     let navigations = this.navDataInit(this.props.navigations.items);
     this.setState({
       navigations: navigations,
     });
-
   }
 
   navDataInit(datas, parentKey = "0", level = 0) {
@@ -75,7 +73,7 @@ export default class Navigation extends React.Component {
       hashHistory.push({
         pathname: path,
         query: query,
-        state: location
+        state:location
       })
     } else {
       return false;

@@ -5,7 +5,7 @@ export default {
   items: [{
     title: "Notification",
     path: "Notification",
-    query: null,
+    query: {id:1},
     children: null
   }, {
     title: "Select",
