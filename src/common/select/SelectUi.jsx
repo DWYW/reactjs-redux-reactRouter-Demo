@@ -45,8 +45,8 @@ export default class SelectUi extends React.Component {
     }
     let selectedIndex = null;
     let selectedValue = null;
-    if (this.props.defaultIndex !== undefined && this.props.defaultIndex !== null) {
-      selectedIndex = parseInt(this.props.defaultIndex);
+    if (this.props.selectedIndex !== undefined && this.props.selectedIndex !== null) {
+      selectedIndex = parseInt(this.props.selectedIndex);
       selectedValue = this.props.options[selectedIndex].toString();
       if (callback) {
         callback({index: selectedIndex, value: this.props.options[selectedIndex]})
@@ -93,13 +93,12 @@ export default class SelectUi extends React.Component {
         themeType: themeType
       })
     }
-    if (this.state.selectedIndex !== undefined && nextProps.selectedIndex !== undefined && nextProps.selectedIndex !== null && nextProps.selectedIndex !== this.state.selectedIndex) {
-      this.handleSelected(nextProps.selectedIndex, nextProps.options[nextProps.selectedIndex]);
+    if(nextProps.selectedIndex !== this.props.selectedIndex && nextProps.selectedIndex !== undefined && nextProps.selectedIndex !== null && nextProps.selectedIndex !== this.state.selectedIndex){
+      this.handleSelected(nextProps.selectedIndex,this.state.options[nextProps.selectedIndex]);
       this.setState({
         selectedIndex: nextProps.selectedIndex.toString(),
-        selectedValue: nextProps.options[nextProps.selectedIndex].toString()
+        selectedValue: this.state.options[nextProps.selectedIndex].toString()
       })
-
     }
 
   }
@@ -180,7 +179,6 @@ SelectUi.propTypes = {
   type: React.PropTypes.string,
   themeType: React.PropTypes.string,
   options: React.PropTypes.array,
-  defaultIndex: React.PropTypes.number,
   selectedIndex: React.PropTypes.number,
   callback: React.PropTypes.func,
   placeholder: React.PropTypes.string,

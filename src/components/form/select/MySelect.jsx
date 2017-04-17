@@ -65,8 +65,7 @@ export default class MySelect extends React.Component {
             <li>options={`[option,...]`}, Array （必需）</li>
             <li>type={`{type}`}, String 包含default,primary,success,error,danger (默认default)</li>
             <li>themeType={`{errorType}`}, String 包含primary,success,error,danger </li>
-            <li>defaultIndex={`{index}`}, Number 初始被选中的位置，从0开始 </li>
-            <li>selectedIndex={`{index}`}, Number 被选中的位置，从0开始 </li>
+            <li>selectedIndex={`{index}`}, Number 当前被选中的位置，从0开始 </li>
             <li>placeholder={`{info}`}, String 默认提示信息 </li>
             <li>width={`{width}`}, String elect及option宽度，最小120px </li>
             <li>height={`{height}`}, String select及option高度 </li>
