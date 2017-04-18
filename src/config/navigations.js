@@ -5,7 +5,7 @@ export default {
   items: [{
     title: "Notification",
     path: "Notification",
-    query: {id:1},
+    query: {id: 1},
     children: null
   }, {
     title: "Select",
@@ -20,6 +20,16 @@ export default {
   }, {
     title: "RadioGroup",
     path: "MyRadioGroup",
+    query: null,
+    children: null
+  }, {
+    title: "Modal",
+    path: "MyModal",
+    query: null,
+    children: null
+  }, {
+    title: "Switch",
+    path: "MySwitch",
     query: null,
     children: null
   }, {

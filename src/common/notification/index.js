@@ -9,8 +9,7 @@ document.body.appendChild(div);
 const contents = reactDOM.render(
 <Contents></Contents>,
 div
-)
-
+);
 function create(type) {
   return (content, opts = {}) => {
     if (type) {

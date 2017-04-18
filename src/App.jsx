@@ -61,7 +61,7 @@ class App extends React.Component {
         <ReactCSSTransitionGroup
         transitionName="fade"
         transitionEnterTimeout={300}
-        transitionLeaveTimeout={300}
+        transitionLeaveTimeout={10}
         >
           <div key={location}>{this.props.children}</div>
         </ReactCSSTransitionGroup>

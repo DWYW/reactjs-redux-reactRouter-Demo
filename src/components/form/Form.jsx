@@ -3,6 +3,8 @@ import './Form.less'
 
 import CheckBoxUI from '../../common/checkbox/CheckBoxUI.jsx'
 import RadioGroup from '../../common/radio/RadioGroup.jsx'
+import {alert,confirm} from '../../common/modal/ModalUi.jsx'
+import SwitchUi from '../../common/switch/SwitchUi.jsx'
 
 
 
@@ -50,7 +52,12 @@ export default class Form extends React.Component {
       testChecked1:false,
     })
   }
-
+  testShowModal(){
+    alert({title:'title',content:"这是一段用于modal提示的内容，内容不宜太多，这是一段用于modal提示的内容，内容不宜太多"});
+  }
+  testShowModal1(){
+    confirm({content:"这是一段用于modal提示的内容，内容不宜太多，这是一段用于modal提示的内容，内容不宜太多"});
+  }
   render() {
     return (
     <div className="form-page">
@@ -62,6 +69,9 @@ export default class Form extends React.Component {
       <div className="mgt10px">
         <RadioGroup defaultChecked={1} align="left" vertical="block" radios={this.radios} name="ssfsd" callback={function(res){console.log(res)}}> </RadioGroup>
       </div>
+      <button className="btn default" onClick={this.testShowModal}>alert modal</button>
+      <button className="btn default" onClick={this.testShowModal1}>confirm modal</button>
+      <SwitchUi></SwitchUi>
     </div>
     )
   }
