@@ -5,6 +5,7 @@ import CheckBoxUI from '../../common/checkbox/CheckBoxUI.jsx'
 import RadioGroup from '../../common/radio/RadioGroup.jsx'
 import {alert,confirm} from '../../common/modal/ModalUi.jsx'
 import SwitchUi from '../../common/switch/SwitchUi.jsx'
+import DatePicker from '../../common/datepicker/DatePicker.jsx'
 
 
 
@@ -72,6 +73,12 @@ export default class Form extends React.Component {
       <button className="btn default" onClick={this.testShowModal}>alert modal</button>
       <button className="btn default" onClick={this.testShowModal1}>confirm modal</button>
       <SwitchUi></SwitchUi>
+
+      <div>
+        <DatePicker format="YYYY/MM/DD" value="2017/04/13" width="120px"></DatePicker>
+        <DatePicker format="yyyy/mm/dd" lang="en"></DatePicker>
+        <DatePicker lang="en"></DatePicker>
+      </div>
     </div>
     )
   }

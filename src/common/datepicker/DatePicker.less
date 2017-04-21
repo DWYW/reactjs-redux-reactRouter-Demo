@@ -1,0 +1,163 @@
+@pickerWidth: 160px;
+@pickerHeight: 28px;
+
+.date-picker-ui {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  .date-picker-clean{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    z-index: 99;
+    color: #cccccc;
+    cursor: pointer;
+    display: none;
+  }
+  &:hover{
+    .date-picker-clean{
+      display: block;
+    }
+  }
+  input.date-picker-input {
+    outline: none;
+    width: @pickerWidth;
+    height: @pickerHeight;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    padding: 0 5px;
+    margin: 0 5px 4px 0;
+    transition: border 0.15s, box-shadow 0.15s;
+    &:focus {
+      border-color: #00bcd4;
+      box-shadow: 0 0 3px #00bcd4;
+    }
+  }
+  .date-picker-panel{
+    position: absolute;
+    width:236px;
+    left:0;
+    background-color:#ffffff;
+    //border:1px solid #cccccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0,0,0,.4);
+    overflow: hidden;
+    z-index: 99999;
+    .date-picker-header{
+      width:100%;
+      height: 36px;
+      line-height: 28px;
+      position: relative;
+      overflow: hidden;
+      background-color: #00bcd4;
+      color: #ffffff;
+      box-sizing: border-box;
+      padding: 4px 10px;
+      .date-picker-header-month{
+        width:50px;
+        height: 100%;
+        float: left;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .date-picker-header-year{
+        width:60px;
+        float: left;
+        font-size: 12px;
+      }
+      .date-picker-header-Btn{
+        float: right;
+        .date-picker-header-prevMonth-btn,.date-picker-header-nextMonth-btn{
+          float: left;
+          width:22px;
+          height:22px;
+          margin-top: 2px;
+          line-height: 24px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,0.5);
+          text-align: center;
+          position: relative;
+          cursor: pointer;
+          &:active{
+           background-color:rgba(255,255,255,.2)
+          }
+          &::after{
+            content: "";
+            display: block;
+            width: 8px;
+            height: 8px;
+            transform: rotate(45deg);
+            position: absolute;
+            transform-origin: center;
+          }
+        }
+        .date-picker-header-prevMonth-btn{
+          margin-right: 15px;
+          &::after{
+            border-left: 1px solid #ffffff;
+            border-bottom: 1px solid #ffffff;
+            left: 8px;
+            top: 6px;
+
+          }
+        }
+        .date-picker-header-nextMonth-btn::after{
+          border-top: 1px solid #ffffff;
+          border-right: 1px solid #ffffff;
+          left: 5px;
+          top: 6px;
+        }
+      }
+
+    }
+    .date-picker-body{
+      width:100%;
+      position: relative;
+      overflow: hidden;
+      padding: 0 5px 10px;
+      box-sizing: border-box;
+      table{
+        font-size: 12px;
+        width: 100%;
+        text-align: center;
+        th,td{
+          padding:0;
+          margin: 0;
+          width:30px;
+          font-weight: 400;
+          border: none;
+        }
+        th{
+          height: 24px;
+        }
+        td{
+          height: 30px;
+          border-radius: 50%;
+          transition: background 0.15s;
+          box-sizing: border-box;
+
+        }
+        td.picker-day{
+          cursor: pointer;
+          &:hover{
+            background-color:rgba(0, 188, 212,.5);
+            color: #ffffff;
+          }
+        }
+        td.current-day{
+          border: 1px solid #00bcd4;
+          color: #00bcd4;
+        }
+        td.picker-selected-day{
+          background-color:rgba(0, 188, 212,1);
+          color: #ffffff;
+        }
+
+      }
+    }
+
+  }
+}

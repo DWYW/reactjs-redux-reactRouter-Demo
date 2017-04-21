@@ -33,6 +33,11 @@ export default {
     query: null,
     children: null
   }, {
+    title: "DatePicker",
+    path: "MyDatePicker",
+    query: null,
+    children: null
+  }, {
     title: "Form",
     path: "form",
     query: null,

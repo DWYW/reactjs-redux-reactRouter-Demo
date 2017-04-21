@@ -4,6 +4,7 @@ import MyCheckBox from '../components/form/checkbox/MyCheckBox.jsx';
 import MyRadioGroup from '../components/form/radio/MyRadioGroup.jsx';
 import MyModal from '../components/modal/MyModal.jsx';
 import MySwitch from '../components/switch/MySwitch.jsx';
+import MyDatePicker from '../components/datepicker/MyDatePicker.jsx';
 import Form from '../components/form/Form.jsx';
 
 const routes = {
@@ -35,6 +36,10 @@ const routes = {
     }, {
       path: 'MySwitch',
       component: MySwitch
+
+    },{
+      path: 'MyDatePicker',
+      component: MyDatePicker
 
     }, {
       path: 'Form',

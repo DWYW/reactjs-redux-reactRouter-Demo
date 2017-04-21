@@ -10,7 +10,7 @@ export default class MySwitch extends React.Component {
     this.state = {
       test1: null,
       test2: false,
-      test3: true
+      test3: false
     }
   }
   componentDidMount() {
@@ -63,8 +63,8 @@ export default class MySwitch extends React.Component {
           <div><SwitchUi callback={this.callback1}></SwitchUi><span>{this.state.test1}</span></div>
           <div><SwitchUi size="smaller" callback={this.callback2}></SwitchUi>{this.state.test2}</div>
           <div><SwitchUi size="smaller" disabled={true} open={this.state.test2}></SwitchUi></div>
-          <div><SwitchUi open={true} callback={this.callback3}></SwitchUi>{this.state.test3}</div>
-          <div><SwitchUi open={this.state.test3} disabled={true}></SwitchUi></div>
+          <div><SwitchUi open={false} callback={this.callback3}></SwitchUi>{this.state.test3}</div>
+          <div><SwitchUi open={true} disabled={this.state.test3}></SwitchUi></div>
 
         </div>
       </div>
